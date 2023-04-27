@@ -65,6 +65,9 @@ function getResultsFrom(target) {
         if (i % 5 === 0) {
             val = "Buzz";
         }
+        if (i % 3 === 0 && i % 5 === 0) {
+            val = "FizzBuzz";
+        }
 
         tmpResults.push(val);
     }

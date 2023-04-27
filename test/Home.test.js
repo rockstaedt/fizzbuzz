@@ -64,7 +64,13 @@ describe("<Home/>...", () => {
                 expect(screen.getAllByText("Buzz", {selector: ".result li"})).toHaveLength(2);
             });
 
-            it.todo("FizzBuzz has to be rendered");
+            it("FizzBuzz has to be rendered", async () => {
+                render(<Home />);
+
+                await submitFormWith(20);
+
+                expect(screen.getAllByText("FizzBuzz", {selector: ".result li"})).toHaveLength(1);
+            });
 
         });
 

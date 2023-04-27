@@ -71,7 +71,7 @@ describe("<Home/>...", () => {
         it("error message when a digit lower than 1 was submitted", async () => {
             render(<Home />);
 
-            await submitFormWith(-2);
+            await submitFormWith(0);
 
             screen.getByText(ERROR_TEXT, {selector: ".error-text"});
         });

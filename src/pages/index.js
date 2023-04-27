@@ -4,7 +4,7 @@ import Head from "next/head";
 import {useRef, useState} from "react";
 
 export const EMPTY_RESULT_HINT = "Geben Sie einen Werte > 1 ein in das Formular ein.";
-export const ERROR_TEXT = "Fehler! Es können keine negativen Zahlen eingegeben werden.";
+export const ERROR_TEXT = "Fehler! Es muss eine Zahl größer 0 eingegeben werden.";
 
 function Home(props) {
     const inputRef = useRef(null);
@@ -13,7 +13,7 @@ function Home(props) {
 
     const handleClick = () => {
         const target = inputRef.current.value;
-        if (target < 0) {
+        if (target <= 0) {
             setErr(ERROR_TEXT);
             return;
         }

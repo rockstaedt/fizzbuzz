@@ -48,9 +48,21 @@ describe("<Home/>...", () => {
                 screen.getByText(/^2$/g, {selector: ".result li"});
             });
 
-            it.todo("Fizz has to be rendered");
+            it("Fizz has to be rendered", async () => {
+                render(<Home />);
 
-            it.todo("Buzz has to be rendered");
+                await submitFormWith(6);
+
+                expect(screen.getAllByText("Fizz", {selector: ".result li"})).toHaveLength(2);
+            });
+
+            it("Buzz has to be rendered", async () => {
+                render(<Home />);
+
+                await submitFormWith(10);
+
+                expect(screen.getAllByText("Buzz", {selector: ".result li"})).toHaveLength(2);
+            });
 
             it.todo("FizzBuzz has to be rendered");
 

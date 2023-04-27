@@ -63,7 +63,7 @@ describe("<Home/>...", () => {
     it("clears result list when input gains focus", async () => {
         render(<Home value={3}/>);
 
-        expect(screen.getAllByText("Fizz", {selector: ".result"})).toHaveLength(1);
+        expect(screen.getAllByText("Fizz", {selector: ".result li"})).toHaveLength(1);
 
         gainFocusOnInput();
 

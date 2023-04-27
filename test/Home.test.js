@@ -77,6 +77,6 @@ describe("<Home/>...", () => {
     }
 
     function gainFocusOnInput() {
-        throw new Error("not implemented yet");
+        fireEvent.focus(screen.getByLabelText("Zielnummer", {}));
     }
 });

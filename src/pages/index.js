@@ -26,7 +26,7 @@ function Home(props) {
 
                 <label>
                     <span>Zielnummer</span>
-                    <input ref={inputRef}/>
+                    <input ref={inputRef} onFocus={() => setResults([])}/>
                 </label>
 
                 <button onClick={handleClick}>Generieren</button>

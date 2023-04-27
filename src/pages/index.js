@@ -22,6 +22,10 @@ function Home() {
                 </label>
 
                 <button>Generieren</button>
+
+                <div className="result">
+                    {EMPTY_RESULT_HINT}
+                </div>
             </main>
         </>
     );

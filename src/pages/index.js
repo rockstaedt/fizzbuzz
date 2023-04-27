@@ -1,10 +1,18 @@
 import styles from "@styles/Home.module.css";
 
 import Head from "next/head";
+import {useRef, useState} from "react";
 
 export const EMPTY_RESULT_HINT = "Geben Sie einen Werte > 1 ein in das Formular ein.";
 
 function Home() {
+    const inputRef = useRef(null);
+    const [results, setResults] = useState([]);
+
+    const handleClick = () => {
+        setResults([1]);
+    };
+
     return (
         <>
             <Head>
@@ -18,13 +26,14 @@ function Home() {
 
                 <label>
                     <span>Zielnummer</span>
-                    <input />
+                    <input ref={inputRef}/>
                 </label>
 
-                <button>Generieren</button>
+                <button onClick={handleClick}>Generieren</button>
 
                 <div className="result">
-                    {EMPTY_RESULT_HINT}
+                    {results.length === 0 && EMPTY_RESULT_HINT}
+                    {results.length > 0 && <><li>1</li><li>2</li></>}
                 </div>
             </main>
         </>

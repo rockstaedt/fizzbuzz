@@ -1,5 +1,6 @@
-import {render, screen} from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import Home, {EMPTY_RESULT_HINT} from "@pages/";
+import userEvent from "@testing-library/user-event";
 
 describe("<Home/>...", () => {
 
@@ -38,7 +39,7 @@ describe("<Home/>...", () => {
             it("only digits has to be rendered", async () => {
                 render(<Home/>);
 
-                submitFormWith(2);
+                await submitFormWith(2);
 
                 // hint should be disappeared
                 expect(screen.queryByText(EMPTY_RESULT_HINT, {selector: ".result"})).toBeNull();
@@ -69,8 +70,10 @@ describe("<Home/>...", () => {
         await screen.findByText(EMPTY_RESULT_HINT, {selector: ".result"});
     });
 
-    function submitFormWith(digit){
-        throw new Error("not implemented yet");
+    async function submitFormWith(digit){
+        await userEvent.type(screen.getByLabelText("Zielnummer", {}), String(digit));
+
+        fireEvent.click(screen.getByRole("button", {}));
     }
 
     function gainFocusOnInput() {

@@ -1,0 +1,23 @@
+{
+    "extends": "next/core-web-vitals",
+    "env": {
+        "jest": true
+    },
+    "rules": {
+        "react/no-unescaped-entities": "off",
+        "@next/next/no-page-custom-font": "off",
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "indent": [
+            "error",
+            4
+        ],
+        "no-multi-spaces": "error"
+    }
+}

@@ -4,13 +4,21 @@ import Head from "next/head";
 import {useRef, useState} from "react";
 
 export const EMPTY_RESULT_HINT = "Geben Sie einen Werte > 1 ein in das Formular ein.";
+export const ERROR_TEXT = "Fehler! Es können keine negativen Zahlen eingegeben werden.";
 
 function Home(props) {
     const inputRef = useRef(null);
-    const [results, setResults] = useState(getResultsFromTarget(props.value));
+    const [results, setResults] = useState(getResultsFrom(props.value));
+    const [err, setErr] = useState("");
 
     const handleClick = () => {
-        setResults(getResultsFromTarget(inputRef.current.value));
+        const target = inputRef.current.value;
+        if (target < 0) {
+            setErr(ERROR_TEXT);
+            return;
+        }
+
+        setResults(getResultsFrom(target));
     };
 
     return (
@@ -27,6 +35,7 @@ function Home(props) {
                 <label>
                     <span>Zielnummer</span>
                     <input ref={inputRef} onFocus={() => setResults([])}/>
+                    {err && <span className="error-text">{err}</span>}
                 </label>
 
                 <button onClick={handleClick}>Generieren</button>
@@ -45,7 +54,7 @@ export default Home;
 
 ///////////////////////////////
 
-function getResultsFromTarget(target) {
+function getResultsFrom(target) {
     let tmpResults = [];
 
     for (let i = 1; i <= target; i++) {

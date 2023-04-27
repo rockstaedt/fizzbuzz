@@ -1,5 +1,5 @@
 import {fireEvent, render, screen} from "@testing-library/react";
-import Home, {EMPTY_RESULT_HINT} from "@pages/";
+import Home, {EMPTY_RESULT_HINT, ERROR_TEXT} from "@pages/";
 import userEvent from "@testing-library/user-event";
 
 describe("<Home/>...", () => {
@@ -56,7 +56,13 @@ describe("<Home/>...", () => {
 
         });
 
-        it.todo("error message when a digit lower than 1 was submitted");
+        it("error message when a digit lower than 1 was submitted", async () => {
+            render(<Home />);
+
+            await submitFormWith(-2);
+
+            screen.getByText(ERROR_TEXT, {selector: ".error-text"});
+        });
 
     });
 

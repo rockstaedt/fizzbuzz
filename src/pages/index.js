@@ -20,6 +20,8 @@ function Home() {
                     <span>Zielnummer</span>
                     <input />
                 </label>
+
+                <button>Generieren</button>
             </main>
         </>
     );

@@ -21,7 +21,11 @@ describe("<Home/>...", () => {
             screen.getByLabelText("Zielnummer", {selector: "main > label > input"});
         });
 
-        it.todo("submit button");
+        it("submit button", () => {
+            render(<Home />);
+
+            screen.getByRole("button", {name: "Generieren"});
+        });
 
         it.todo("hint text that a digit greater 0 has to be submitted");
 

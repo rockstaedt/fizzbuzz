@@ -38,7 +38,7 @@ function Home(props) {
                     {err && <span className="error-text">{err}</span>}
                 </label>
 
-                <button onClick={handleClick}>Generieren</button>
+                <button onClick={handleClick}>Generieren (heimlicher Fehler)</button>
 
                 <div className="result">
                     {results.length === 0 && EMPTY_RESULT_HINT}
